@@ -37,9 +37,9 @@ To install an older version than the latest one, you can specify the version by 
 
 ## Usage
 
-### Change your behaviour
+### Copy the binaries in `$PATH`
 
-You can install the binaries and use `cpg -g` and `mvg -g` instead of cp and mv:
+Copy the binaries and use `cpg -g` and `mvg -g` instead of cp and mv:
 
 ```
 sudo mv ./advcpmv/advcp /usr/local/bin/cpg
@@ -70,6 +70,32 @@ Fish:
 echo "alias cp '/usr/local/bin/advcp -g'" >> ~/.config/fish/config.fish
 echo "alias mv '/usr/local/bin/advmv -g'" >> ~/.config/fish/config.fish
 ```
+
+### Function
+
+The following functions work in Bash, Zsh, Ksh, Dash, and other POSIX-compatible shells. They keep the system `cp` and `mv` as the default and use Advanced Copy only when called with `-g`:
+
+```
+cp() {
+	if [ "$1" = "-g" ]; then
+		shift
+		/usr/local/bin/advcp -g "$@"
+	else
+		command cp "$@"
+	fi
+}
+
+mv() {
+	if [ "$1" = "-g" ]; then
+		shift
+		/usr/local/bin/advmv -g "$@"
+	else
+		command mv "$@"
+	fi
+}
+```
+
+Fish does not support this function syntax; use the Fish aliases above instead.
 
 ```
 ## Upstream merge
