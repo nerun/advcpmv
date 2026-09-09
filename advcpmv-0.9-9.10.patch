@@ -1,5 +1,5 @@
---- coreutils-9.11/src/copy-file-data.c	2026-07-23 09:47:29.805900811 -0600
-+++ coreutils-9.11k/src/copy-file-data.c	2026-07-23 09:47:29.837329370 -0600
+--- coreutils-9.10/src/copy-file-data.c	2026-01-19 19:10:57.000000000 -0300
++++ coreutils-9.10-patched/src/copy-file-data.c	2026-09-09 14:09:13.775450136 -0300
 @@ -28,6 +28,153 @@
  #include "full-write.h"
  #include "ioblksize.h"
@@ -504,8 +504,8 @@
    alignfree (buf);
    return result;
  }
---- coreutils-9.11/src/copy.h	2026-07-23 09:47:29.805951169 -0600
-+++ coreutils-9.11k/src/copy.h	2026-07-23 09:47:29.837358788 -0600
+--- coreutils-9.10/src/copy.h	2026-01-19 19:10:58.000000000 -0300
++++ coreutils-9.10-patched/src/copy.h	2026-09-09 14:09:13.776259815 -0300
 @@ -255,6 +255,9 @@
       Create destination directories as usual. */
    bool symbolic_link;
@@ -549,8 +549,8 @@
 +/* END progress mod */
 +
  #endif
---- coreutils-9.11/src/cp.c	2026-07-23 09:47:29.806107878 -0600
-+++ coreutils-9.11k/src/cp.c	2026-07-23 09:47:29.837379316 -0600
+--- coreutils-9.10/src/cp.c	2026-01-21 10:51:58.000000000 -0300
++++ coreutils-9.10-patched/src/cp.c	2026-09-09 14:09:13.776786897 -0300
 @@ -141,6 +141,7 @@
    {"symbolic-link", no_argument, NULL, 's'},
    {"target-directory", required_argument, NULL, 't'},
@@ -743,8 +743,8 @@
    x.backup_type = (make_backups
                     ? xget_version (_("backup type"),
                                     version_control_string)
---- coreutils-9.11/src/mv.c	2026-07-23 09:47:29.807078459 -0600
-+++ coreutils-9.11k/src/mv.c	2026-07-23 09:47:29.837402508 -0600
+--- coreutils-9.10/src/mv.c	2026-01-21 10:51:40.000000000 -0300
++++ coreutils-9.10-patched/src/mv.c	2026-09-09 14:09:13.777690294 -0300
 @@ -80,6 +80,7 @@
    {"target-directory", required_argument, NULL, 't'},
    {"update", optional_argument, NULL, 'u'},
@@ -903,9 +903,9 @@
          case 'i':
            x.interactive = I_ASK_USER;
            break;
---- coreutils-9.11/doc/coreutils.texi	2026-07-23 09:47:29.758119162 -0600
-+++ coreutils-9.11k/doc/coreutils.texi	2026-07-23 09:47:29.838680665 -0600
-@@ -8825,6 +8825,11 @@
+--- coreutils-9.10/doc/coreutils.texi	2026-01-26 08:54:16.000000000 -0300
++++ coreutils-9.10-patched/doc/coreutils.texi	2026-09-09 14:09:13.779233768 -0300
+@@ -8794,6 +8794,11 @@
  This option is ignored when the @option{--no-clobber} or @option{-n} option
  is also used.
  
@@ -917,7 +917,7 @@
  @optItem{cp,-i,}
  @optItemx{cp,--interactive,}
  When copying a file other than a directory, prompt whether to
-@@ -9995,6 +10000,12 @@
+@@ -9964,6 +9969,12 @@
  @end macro
  @mvOptsIfn
  
