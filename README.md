@@ -35,6 +35,12 @@ To install an older version than the latest one, you can specify the version by 
 ... sh install.sh 0.8 8.32 ...
 ```
 
+Alternatively, if you have already cloned this repository, you can run `install.sh` with the path to one of the patch files as the only argument, and it will infer the advcpmv and coreutils versions from the filename.
+
+```
+sh install.sh advcpmv-0.8-8.32.patch
+```
+
 ## Usage
 
 ### Copy the binaries in `$PATH`
